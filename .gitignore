@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+static/
+output/
+data/
+config.toml
+output.json
