@@ -7,7 +7,7 @@ ocr = PaddleOCR(
 )
 
 def pdf_to_text(path: str) -> str:
-    results = ocr.predict("./static/test2.pdf")
+    results = ocr.predict("./static/test.pdf")
     all_text = []
     for res in results:
         texts = res['rec_texts']
