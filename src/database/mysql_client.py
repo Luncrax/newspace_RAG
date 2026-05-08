@@ -7,6 +7,7 @@ from src.model.config_model import Config
 
 class MySQLClient:
     """mysql客户端,使用前需要init(因为创建函数是异步,而类的__init__不能是异步)"""
+
     pool: aiomysql.Pool
 
     async def init(self, config: Config):
@@ -35,13 +36,21 @@ class MySQLClient:
                 await cur.execute("SELECT id, parent_id ,name From new_tag")
                 r = await cur.fetchall()
                 return r
-            
+
     async def get_all_pdf_info(self) -> List:
         async with self.pool.acquire() as conn:
             async with conn.cursor() as cur:
-                await cur.execute("SELECT * from new_team_case WHERE type = \"pdf\"")
+                await cur.execute('SELECT * from new_team_case WHERE type = "pdf"')
                 r = await cur.fetchall()
                 return r
 
-
-    
+    async def get_pdf_info(self, file_id: str):
+        """应该返回(tream_id, name, path)"""
+        async with self.pool.acquire() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    "SELECT team_id, name, path FROM new_team_case WHERE id = %s",
+                    (file_id,),
+                )
+                r = await cur.fetchone()
+                return r

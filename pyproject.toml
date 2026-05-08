@@ -39,5 +39,8 @@ markers = [
     "get_tags: 调用数据库获取tags",
     "consumer: redis消费者测试",
     "paddle_struct: 测试paddle的struct模型",
-    "test_ocr: 测试paddle的ocr模型"
+    "test_ocr: 测试paddle的ocr模型",
+    "test_set: 测试数据库set的差异",
+    "test_download: 测试下载",
+    "cha: 下载文件的差异"
 ]
