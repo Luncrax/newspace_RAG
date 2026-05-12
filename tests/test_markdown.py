@@ -8,7 +8,7 @@ async def test_ocr():
         lang="ch",
         device="gpu"
     )
-    results = ocr.predict("./static/test.pdf")
+    results = ocr.predict("./static/test3.pdf")
     all_text = []
     for res in results:
         texts = res['rec_texts']

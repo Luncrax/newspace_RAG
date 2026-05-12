@@ -19,5 +19,5 @@ async def test_struct_model():
 
     # 使用
     pipeline = PPStructureV3(device="gpu")
-    output = pipeline.predict("./static/test2.pdf")
+    output = pipeline.predict("./static/test3.pdf")
     save_text_as_json(output, "output")   # 生成 output.json
