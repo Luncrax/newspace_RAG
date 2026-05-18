@@ -17,6 +17,7 @@ dependencies = [
     "tomli-w>=1.2.0",
     "openai>=2.35.1",
     "motor>=3.7.1",
+    "apscheduler>=3.11.2",
 ]
 
 [tool.uv.sources]

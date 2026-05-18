@@ -54,3 +54,24 @@ class MySQLClient:
                 )
                 r = await cur.fetchone()
                 return r
+
+    async def get_all_fav_pdf_info(self) -> List:
+        """应该返回(tream_id, name, path)"""
+        async with self.pool.acquire() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    "SELECT * FROM new_team_fav_case WHERE type = 'pdf'",
+                )
+                r = await cur.fetchall()
+                return r
+            
+    async def get_fav_pdf_info(self, file_id: str):
+        """应该返回(team_id, name, path)"""
+        async with self.pool.acquire() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(
+                    "SELECT team_id, name, path, id FROM new_team_fav_case WHERE id = %s",
+                    (file_id,),
+                )
+                r = await cur.fetchone()
+                return r
